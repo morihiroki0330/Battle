@@ -1,0 +1,6 @@
+5
+7,HpFrame,61,../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/HpFrame.png,-750.0,-465.0,300,100,10,1.0,1.0,0.5,0.5,11,HpFrame.dds
+8,GunFrame,62,../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/GunFrame.png,750.0,-465.0,300,100,10,1.0,1.0,0.5,0.5,12,GunFrame.dds
+9,WaveFrame,63,../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/WaveFrame.png,-750.0,465.0,300,100,10,1.0,1.0,0.5,0.5,13,WaveFrame.dds
+7,MiniMap,61,../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/MiniMap.png,810.0,390.0,300,300,10,1.0,1.0,0.5,0.5,11,MiniMap.dds
+6,Canvas,60,../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/Canvas.DDS,0.0,1.1368683772161603e-13,1920,1080,0,1.0,1.0,0.5,0.5,10,Canvas.dds

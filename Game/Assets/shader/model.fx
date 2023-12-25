@@ -7,12 +7,13 @@
 // 定数バッファ。
 ////////////////////////////////////////////////
 //モデル用の定数バッファ
-cbuffer ModelCb : register(b0){
+cbuffer ModelCb : register(b0)
+{
 	float4x4 mWorld;
 	float4x4 mView;
 	float4x4 mProj;
+	
 };
-
 ////////////////////////////////////////////////
 // 構造体
 ////////////////////////////////////////////////
@@ -24,19 +25,29 @@ struct SSkinVSIn{
 //頂点シェーダーへの入力。
 struct SVSIn{
 	float4 pos 		: POSITION;		//モデルの頂点座標。
+	float3 normal   :NORMAL;
 	float2 uv 		: TEXCOORD0;	//UV座標。
+	float3 tangent  : TANGENT;
+	float3 biNormal : BINORMAL;
 	SSkinVSIn skinVert;				//スキン用のデータ。
 };
 //ピクセルシェーダーへの入力。
 struct SPSIn{
 	float4 pos 			: SV_POSITION;	//スクリーン空間でのピクセルの座標。
+	float3 normal       :NORMAL;
 	float2 uv 			: TEXCOORD0;	//uv座標。
+	float3 worldPos     : TEXCOORD1;
+	float3 normalInView : TEXCOORD2;
+	float3 tangent  : TANGENT;
+	float3 biNormal : BINORMAL;
 };
 
 ////////////////////////////////////////////////
 // グローバル変数。
 ////////////////////////////////////////////////
 Texture2D<float4> g_albedo : register(t0);				//アルベドマップ
+Texture2D<float4> g_normalMap : register(t1);				//法線マップ
+Texture2D<float4> g_specularMap : register(t2);             //スペキュラマップ
 StructuredBuffer<float4x4> g_boneMatrix : register(t3);	//ボーン行列。
 sampler g_sampler : register(s0);	//サンプラステート。
 
@@ -75,11 +86,16 @@ SPSIn VSMainCore(SVSIn vsIn, uniform bool hasSkin)
 	}else{
 		m = mWorld;
 	}
+
+	psIn.worldPos = vsIn.pos;
 	psIn.pos = mul(m, vsIn.pos);
 	psIn.pos = mul(mView, psIn.pos);
 	psIn.pos = mul(mProj, psIn.pos);
-
+	psIn.normal = mul(mWorld, vsIn.normal);
 	psIn.uv = vsIn.uv;
+	psIn.normalInView = mul(mView, psIn.normal);
+	psIn.tangent = normalize(mul(mWorld, vsIn.tangent));
+	psIn.biNormal = normalize(mul(mWorld, vsIn.biNormal));
 
 	return psIn;
 }
@@ -101,7 +117,7 @@ SPSIn VSSkinMain( SVSIn vsIn )
 /// <summary>
 /// ピクセルシェーダーのエントリー関数。
 /// </summary>
-float4 PSMain( SPSIn psIn ) : SV_Target0
+float4 PSMain(SPSIn psIn) : SV_Target0
 {
 	float4 albedoColor = g_albedo.Sample(g_sampler, psIn.uv);
 	return albedoColor;

@@ -69,8 +69,9 @@ void InitWindow(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, 
 		hInstance,				//アプリケーションのインスタンス。
 		NULL
 	);
-
-	ShowWindow(g_hWnd, nCmdShow);
+	SetWindowLong(g_hWnd, GWL_STYLE, GetWindowLong(g_hWnd, GWL_STYLE) & ~WS_CAPTION);
+	ShowWindow(g_hWnd, SW_MAXIMIZE);
+	//ShowWindow(g_hWnd, nCmdShow);
 
 }
 
