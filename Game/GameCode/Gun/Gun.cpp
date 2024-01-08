@@ -37,14 +37,14 @@ void Gun::Shot()
 				S_GunData.M_CoolDownTime = 0;
 			}
 		}
-		if (S_Operation.P_Mouse->GetMouseFlag(MOUSE_LEFTBUTTON))
-		{
-			NewGO<GunSound>(0, "gunsound");
-		}
 	}
 }
 void Gun::Reload()
 {
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-	{S_GunData.M_BulletCount = S_GunData.M_BulletMaxCount;}
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000 && S_GunData.M_ReloadFlag)
+	{
+		NewGO<GunSound>(0, "gunsound");
+		S_GunData.M_BulletCount = S_GunData.M_BulletMaxCount;
+		S_GunData.M_ReloadFlag = false;
+	}
 }
