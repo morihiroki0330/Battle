@@ -169,6 +169,7 @@ struct DataBullet
 struct DataGun
 {
 	bool M_CoolDownFlag = false;
+	bool M_ReloadFlag = true;
 
 	int M_CoolDownTime = 0;
 	int M_CoolDownTimeFixed = 15;
