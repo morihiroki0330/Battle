@@ -3,8 +3,8 @@
 Sky::Sky()
 {
 	M_TextureFilePaths[SkyBoxType_Morning] = L"Assets/modelData/SkyBox/SkyBox_Morning.DDS";
-	M_TextureFilePaths[SkyBoxType_Noon] = L"Assets/modelData/SkyBox/SkyBox_Noon.DDS";
-	M_TextureFilePaths[SkyBoxType_Night] = L"Assets/modelData/SkyBox/SkyBox_Night.DDS";
+	M_TextureFilePaths[SkyBoxType_Noon]    = L"Assets/modelData/SkyBox/SkyBox_Noon.DDS";
+	M_TextureFilePaths[SkyBoxType_Night]   = L"Assets/modelData/SkyBox/SkyBox_Night.DDS";
 }
 bool Sky::Start()
 {
@@ -16,7 +16,7 @@ bool Sky::Start()
 
 	for (int i = 0; i < SkyBoxType_Num; i++)
 	{M_Texture[i].InitFromDDSFile(M_TextureFilePaths[i]);}
-	InitData.m_expandShaderResoruceView[0] = &M_Texture[Type];
+	InitData.m_expandShaderResoruceView[0] = &M_Texture[M_Type];
 	M_SkyBox.InitForwardRendering(InitData);
 	M_SkyBox.Update();
 

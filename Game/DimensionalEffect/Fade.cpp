@@ -28,31 +28,31 @@ void Fade::Render(RenderContext& rc)
 
 void Fade::FadeIn()
 {
-	if (M_AlphaResetDecision)
+	if (M_AlphaReset)
 	{
 		M_Alpha = 10.0f;
-		M_AlphaResetDecision = false;
+		M_AlphaReset = false;
 	}
-	M_Alpha -= FadeSpeed * g_gameTime->GetFrameDeltaTime();
+	M_Alpha -= M_FadeSpeed * g_gameTime->GetFrameDeltaTime();
 	if (M_Alpha <= 0.0f)
 	{
 		M_Alpha = 0.0f;
 		M_State = ENSTATE_IDLE;
-		M_AlphaResetDecision = true;
+		M_AlphaReset = true;
 	}
 }
 void Fade::FadeOut()
 {
-	if (M_AlphaResetDecision)
+	if (M_AlphaReset)
 	{
 		M_Alpha = 0.0f;
-		M_AlphaResetDecision = false;
+		M_AlphaReset = false;
 	}
-	M_Alpha += FadeSpeed * g_gameTime->GetFrameDeltaTime();
+	M_Alpha += M_FadeSpeed * g_gameTime->GetFrameDeltaTime();
 	if (M_Alpha >= 10.0f)
 	{
 		M_Alpha = 10.0f;
 		M_State = ENSTATE_IDLE;
-		M_AlphaResetDecision = true;
+		M_AlphaReset = true;
 	}
 }

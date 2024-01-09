@@ -1,5 +1,6 @@
 #pragma once
 #include "DimensionalStorage/StructStorage.h"
+#include "physics/PhysicsGhostObject.h"
 class Player : public IGameObject
 {
 public:
@@ -16,30 +17,35 @@ public:
 	void InitValue();
 
 	int GetPlayerHp()
-	{return S_Player.M_PlayerHp;}
+	{return M_PlayerHp;}
 
 	bool PlayerIsSelf(const btCollisionObject& contactObject)
-	{return S_Player.M_PlayerGhost.IsSelf(contactObject);}
+	{return M_PlayerGhost.IsSelf(contactObject);}
 
 	const Vector3& GetPosition()
-	{return S_Player.M_PlayerPosition;}
+	{return M_PlayerPosition;}
 
 	const Vector3& GetSpped()
-	{return S_Player.M_PlayerPosition;}
+	{return M_PlayerPosition;}
 private:
-	DataPlayer S_Player;
+	ModelRender M_PlayerModel;
+
+	Vector3 M_PlayerPosition = { 0.0f , 500.0f , 0.0f };
+	Vector3 M_PlayerSpeed    = { 0.0f , 0.0f   , 0.0f };
+	Vector3 M_PlayerForward  = { 0.0f , 0.0f   , 0.0f };
+	Vector3 M_PlayerRight    = { 0.0f , 0.0f   , 0.0f };
+
+	CharacterController M_PlayerController;
+	PhysicsGhostObject M_PlayerGhost;
+
+	int M_PlayerHp = 100;
+	int M_CoolDownTime = 0;
+	int M_CoolDownTimeFixed = 10;
+
+	bool M_CoolDownFlag = false;
 
 	ClassOperation S_Operation;
 	ClassObject S_Object;
 	ClassGun S_Gun;
-
-	FontRender FX;
-	wchar_t M_X[256];
-	
-	FontRender FY;
-	wchar_t M_Y[256];
-
-	FontRender FZ;
-	wchar_t M_Z[256];
 }; 
 

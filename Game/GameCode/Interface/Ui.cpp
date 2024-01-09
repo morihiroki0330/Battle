@@ -136,15 +136,11 @@ void Ui::Update()
 	Time();
 	S_Ui.TextureUpdate();
 
-	swprintf_s(M_X, 256, L"Pivot:%f", S_Ui.S_MiniMap.MiniMapPlayerDirectionTexture.GetPivot().y);
-	FX.SetText(M_X);
-	FX.SetPosition({ 0.0f,200.0f,0.0f });
-	FX.SetScale(1.0f);
+	
 }
 void Ui::Render(RenderContext& rc)
 {
 	S_Ui.TextureRender(rc);
-	FX.Draw(rc);
 	for (int i = 0; i < P_Enemy.size(); i++)
 	{
 		if (S_Ui.S_MiniMap.EnemyFlag[i])

@@ -8,8 +8,8 @@ public:
 	void Update();
 	void Render(RenderContext& rc);
 private:
-	DataGameResultGraphics S_Graphics;
-	DataGameResultButton S_Button;
+	SpriteRender M_GameResultTexture;
+	SpriteRender M_ResultButton;
 
 	ClassGame S_Game;
 	ClassDimensionalElement S_Element;

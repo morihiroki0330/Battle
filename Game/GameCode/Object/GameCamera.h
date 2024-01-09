@@ -5,7 +5,6 @@ class GameCamera : public IGameObject
 public:
 	bool Start();
 	void Update();
-	void Render(RenderContext& rc);
 
 	void CameraMove(Vector2 Position);
 	void RightMove(Vector2 Position);
@@ -15,20 +14,21 @@ public:
 	void AngleJust();
 
 	Vector3 GetCameraPosition()
-	{return S_Camera.M_CameraPosition;}
+	{return M_CameraPosition;}
 	Vector3 GetCameraTarget()
-	{return S_Camera.M_CameraTarget;}
+	{return M_CameraTarget;}
 	int GetAngle()
-	{return S_Camera.M_Angle;}
+	{return M_Angle;}
 private:
-	DataCamera S_Camera;
+	Vector3 M_CameraPosition = { 0.0f , 150.0f , 0.0f };
+	Vector3 M_CameraTarget   = { 0.0f , 0.0f   , 9000000.0f };
+	Vector2 M_MovePosition   = { 0.0f , 0.0f };
+
+	int M_Angle = 0;
+
+	const float M_CircleFication = 9000000.0f;
+	const float M_MagniFication  = 10000.0f;
 	
 	ClassPlayer S_Player;
-
-	FontRender FX;
-	wchar_t M_X[256];
-
-	FontRender FY;
-	wchar_t M_Y[256];
 };
 

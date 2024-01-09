@@ -7,7 +7,7 @@ public:
 	void Update();
 	void Render(RenderContext& rc);
 	void SetPosition(Vector3 Pos)
-	{S_Enemy.M_EnemyPosition = Pos;}
+	{M_EnemyPosition = Pos;}
 
 	void EnemyMove();
 	void EnemyFall();
@@ -20,14 +20,24 @@ public:
 
 	void InitValue();
 	Vector3 GetPosition()
-	{return S_Enemy.M_EnemyPosition;}
+	{return M_EnemyPosition;}
 
 	bool GetFlag()
-	{
-		return S_Enemy.M_CreateFlag;
-	}
+	{return M_CreateFlag;}
 private:
-	DataEnemy S_Enemy;
+	ModelRender M_EnemyModel;
+
+	Vector3 M_EnemyPosition = { 0.0f,0.0f,0.0f };
+	Vector3 M_EnemySpeed = { 0.0f,0.0f,0.0f };
+
+	CharacterController M_EnemyController;
+
+	int M_EnemyHp = 1;
+	int M_EnemyScore = 500;
+	int M_CoolTime = 0;
+
+	bool M_CoolFlag = false;
+	bool M_CreateFlag = false;
 
 	ClassGame S_Game;
 	ClassPlayer S_Player;

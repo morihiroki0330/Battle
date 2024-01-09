@@ -16,15 +16,16 @@ public:
 	const bool IsFade() const
 	{return M_State != ENSTATE_IDLE;}
 
-	int a = 1;
 private:
 	SpriteRender M_FadeTexture;
 	Vector4 M_ButtonCollar = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 	int M_State = ENSTATE_FADEIN;
-	bool M_AlphaResetDecision = true;
-	float M_Alpha             = 10.0f;
-	float FadeSpeed           = 5.0f;
+	
+	float M_Alpha     = 10.0f;
+	float M_FadeSpeed = 5.0f;
+
+	bool M_AlphaReset = true;
 };
 
 

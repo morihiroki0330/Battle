@@ -8,7 +8,7 @@ public:
 	void Update();
 	void Render(RenderContext& rc);
 private:
-	DataGunSight S_GunSight;
+	SpriteRender M_GunSightTexture;
 	ClassObject S_Object;
 };
 

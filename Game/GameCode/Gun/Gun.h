@@ -11,9 +11,16 @@ public:
 	void Reload();
 
 	int GetBulletCount()
-	{return S_GunData.M_BulletCount;}
+	{return M_BulletCount;}
 private:
-	DataGun S_GunData;
+	bool M_CoolDownFlag = false;
+	bool M_ReloadFlag = true;
+
+	int M_CoolDownTime      = 0;
+	int M_CoolDownTimeFixed = 15;
+	int M_BulletCount       = 60;
+	int M_BulletMaxCount    = 60;
+
 	ClassGun S_Gun;
 	ClassOperation S_Operation;
 };
