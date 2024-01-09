@@ -70,7 +70,8 @@ struct DataUiGun
 {
 	SpriteRender BulletCountTexture[2];
 	SpriteRender GunFrameTexture;
-	Vector4 BulletIn = { 1.0f , 1.0f , 1.0f , 1.0f };
+	SpriteRender GunTexture;
+	Vector4 BulletIn  = { 1.0f , 1.0f , 1.0f , 1.0f };
 	Vector4 BulletOut = { 0.8f , 0.0f , 0.0f , 1.0f };
 	int BulletCount;
 	int BulletCountMemory;
@@ -80,7 +81,8 @@ struct DataUiGun
 		{
 			BulletCountTexture[i].Init("Assets/Sprite/Ui/Count/0.DDS", 50.0f, 50.0f, true);
 		}
-		GunFrameTexture.Init("Assets/Sprite/Ui/GunFrame.DDS", 300.0f, 100.0f, true);
+		GunFrameTexture.Init("Assets/Sprite/Ui/Gun/GunFrame.DDS", 300.0f, 100.0f, true);
+		GunTexture.Init("Assets/Sprite/Ui/Gun/Gun.DDS", 350.0f, 450.0f, true);
 	}
 	void UpdateTexture()
 	{
@@ -89,6 +91,7 @@ struct DataUiGun
 			BulletCountTexture[i].Update();
 		}
 		GunFrameTexture.Update();
+		GunTexture.Update();
 	}
 	void DrawTexture(RenderContext& rc)
 	{
@@ -97,6 +100,7 @@ struct DataUiGun
 			BulletCountTexture[i].Draw(rc);
 		}
 		GunFrameTexture.Draw(rc);
+		GunTexture.Draw(rc);
 	}
 };
 struct DataUiScore

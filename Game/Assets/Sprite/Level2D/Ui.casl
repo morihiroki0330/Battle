@@ -1,4 +1,4 @@
-34
+35
 6,Canvas,63,../../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/Canvas.png,-1.9230769230769056,1.1368683772161603e-13,1920,1080,1,1.0,1.0,0.5,0.5,10,Canvas.dds
 8,GunFrame,65,../../../../BattlefieldHorizon/Game/Assets/Sprite/Ui/GunFrame.png,750.0,-465.0,300,100,10,1.0,1.0,0.5,0.5,12,GunFrame.dds
 9,EnemyIcon,71,../../../../BattlefieldHorizon/Game/Assets/Sprite/Level2D/EnemyIcon.png,-450.00000000000006,500.0,150,75,10,1.0,1.0,0.5,0.5,13,EnemyIcon.dds
@@ -33,3 +33,4 @@
 12,MiniMapFrame,74,../../../../BattlefieldHorizon/Game/Assets/Sprite/Level2D/MiniMapFrame.png,765.0,345.0,390,390,10,1.0,1.0,0.5,0.5,16,MiniMapFrame.dds
 7,MiniMap,69,../../../../BattlefieldHorizon/Game/Assets/Sprite/Level2D/MiniMap.png,765.0,345.0,380,380,5,1.268,1.268,0.5,0.5,11,MiniMap.dds
 22,MiniMapPlayerDirection,84,../../../../BattlefieldHorizon/Game/Assets/Sprite/Level2D/MiniMapPlayerDirection.png,770.0,370.0,15,20,10,1.0,1.0,0.5,0.5,26,MiniMapPlayerDirection.dds
+3,Gun,53,../../../../Battle/Game/Assets/Sprite/Level2D/Gun.png,350.0,-320.0000000000001,350,450,0,1.0,1.0,0.5,0.5,7,Gun.dds

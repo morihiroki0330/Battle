@@ -45,6 +45,11 @@ bool Ui::Start()
 		S_Ui.S_Gun.GunFrameTexture.SetPosition(objData.position);
 		return true;
 	}
+	if (objData.EqualObjectName("Gun") == true)
+	{
+		S_Ui.S_Gun.GunTexture.SetPosition(objData.position);
+		return true;
+	}
 	if (objData.EqualObjectName("EnemyIcon") == true)
 	{
 		S_Ui.S_EnemyCount.EnemyIconTexture.SetPosition(objData.position);
