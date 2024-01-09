@@ -8,10 +8,10 @@ bool Ui::Start()
 	Level2D.Init("Assets/Sprite/Level2D/Ui.casl", [&](Level2DRenderObjectData& objData)
 	{
 	if (objData.EqualObjectName("Canvas") == true)
-		{
-			S_Ui.CanvasTexture.SetPosition(objData.position);
-			return true;
-		}
+	{
+		S_Ui.CanvasTexture.SetPosition(objData.position);
+		return true;
+	}
 			
 	if (objData.EqualObjectName("MiniMap") == true)
 	{
@@ -47,7 +47,7 @@ bool Ui::Start()
 	}
 	if (objData.EqualObjectName("Gun") == true)
 	{
-		S_Ui.S_Gun.GunTexture.SetPosition(objData.position);
+		S_Ui.GunTexture.SetPosition(objData.position);
 		return true;
 	}
 	if (objData.EqualObjectName("EnemyIcon") == true)

@@ -70,7 +70,6 @@ struct DataUiGun
 {
 	SpriteRender BulletCountTexture[2];
 	SpriteRender GunFrameTexture;
-	SpriteRender GunTexture;
 	Vector4 BulletIn  = { 1.0f , 1.0f , 1.0f , 1.0f };
 	Vector4 BulletOut = { 0.8f , 0.0f , 0.0f , 1.0f };
 	int BulletCount;
@@ -78,29 +77,20 @@ struct DataUiGun
 	void InitTexture()
 	{
 		for (int i = 0; i < sizeof(BulletCountTexture) / sizeof(BulletCountTexture[0]); i++)
-		{
-			BulletCountTexture[i].Init("Assets/Sprite/Ui/Count/0.DDS", 50.0f, 50.0f, true);
-		}
+		{BulletCountTexture[i].Init("Assets/Sprite/Ui/Count/0.DDS", 50.0f, 50.0f, true);}
 		GunFrameTexture.Init("Assets/Sprite/Ui/Gun/GunFrame.DDS", 300.0f, 100.0f, true);
-		GunTexture.Init("Assets/Sprite/Ui/Gun/Gun.DDS", 350.0f, 450.0f, true);
 	}
 	void UpdateTexture()
 	{
 		for (int i = 0; i < sizeof(BulletCountTexture) / sizeof(BulletCountTexture[0]); i++)
-		{
-			BulletCountTexture[i].Update();
-		}
+		{BulletCountTexture[i].Update();}
 		GunFrameTexture.Update();
-		GunTexture.Update();
 	}
 	void DrawTexture(RenderContext& rc)
 	{
 		for (int i = 0; i < sizeof(BulletCountTexture) / sizeof(BulletCountTexture[0]); i++)
-		{
-			BulletCountTexture[i].Draw(rc);
-		}
+		{BulletCountTexture[i].Draw(rc);}
 		GunFrameTexture.Draw(rc);
-		GunTexture.Draw(rc);
 	}
 };
 struct DataUiScore
@@ -256,6 +246,7 @@ struct DataUiTime
 
 struct DataUi
 {
+	SpriteRender GunTexture;
 	SpriteRender CanvasTexture;
 
 	DataUiPlayerHp S_PlayerHp;
@@ -268,6 +259,7 @@ struct DataUi
 
 	void TextureInit()
 	{
+		GunTexture.Init("Assets/Sprite/Ui/Gun/Gun.DDS", 350.0f, 450.0f, true);
 		CanvasTexture.Init("Assets/Sprite/Ui/Canvas.DDS", 1920.0f, 1080.0f, true);
 		S_PlayerHp.InitTexture();
 		S_EnemyCount.InitTexture();
@@ -279,6 +271,7 @@ struct DataUi
 	}
 	void TextureUpdate()
 	{
+		GunTexture.Update();
 		CanvasTexture.Update();
 		S_PlayerHp.UpdateTexture();
 		S_EnemyCount.UpdateTexture();
@@ -290,6 +283,7 @@ struct DataUi
 	}
 	void TextureRender(RenderContext& rc)
 	{
+		GunTexture.Draw(rc);
 		CanvasTexture.Draw(rc);
 		S_PlayerHp.DrawTexture(rc);
 		S_EnemyCount.DrawTexture(rc);
@@ -331,9 +325,5 @@ private:
 	std::vector<Enemy*> P_Enemy;
 
 	Level2DRender Level2D;
-
-	
-
-	int Count = 0;
 };
 
